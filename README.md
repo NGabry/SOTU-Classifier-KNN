@@ -11,8 +11,21 @@ or
 
 Transcripts of these speeches are avaialble at [govinfo.com](https://www.govinfo.gov/features/state-of-the-union)
 
-I have broken this down into to major parts. In part 1 I run through an initial implementation of the k nearest neighbors leanring model on vectorized text chunks of 100 words. Ultimately, this results in a model that doesn't do much better than what we would expect from a random assigner, even after we find the optimal k-value:
+In this repo there are three jupyter-notebooks. 
+### setup.ipynb
+In this notebook we walk through the steps from reading in the raw speech data, chunk the text into blocks of 100 words, and exporting each chunk into a labeled data frame
 
-![alt text](https://github.com/NGabry/SOTU-Classifier-KNN/blob/main/figs/k_val_plot.png?raw=true)
+### sklearn_knn.ipynb
+This notebook contains the full process of reading in the newly created data all the way through to training a KNN model and classifying a test set of speech chunks.
+This initial model implementation of the k nearest neighbors algorithm uses vectorized text chunks of 100 words, where a word constitutes any thing 5 letters or longer.
 
-In part two, we then begin to explore how altering our data input can result in better classification accuracy by testing three major 
+Ultimately we aer able to classify our test set of speeches with an average accuracy of 61.42% when our K value is optimized.
+
+![alt text](https://github.com/NGabry/SOTU-Classifier-KNN/blob/main/figs/first_k_val_plot.png?raw=true)
+
+### FULL_MODEL.ipynb    
+Here we condense the previous two notebooks into a single notebook to allow for easier exploration into how altering our data input can result in better classification accuracy. By tweaking two major input parameters (word chunks size, and word letter size), we are abel to get our model up to 100% classification accuracy!
+
+![alt text](https://github.com/NGabry/SOTU-Classifier-KNN/blob/main/figs/k_val_plot_5_500.png?raw=true)
+
+This notebook allows for easy exploration how these two paramters change calssification accuracy by allowing you to set the two variables to any value in the second cell.
